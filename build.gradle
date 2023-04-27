@@ -10,13 +10,14 @@ repositories {
     mavenCentral()
 }
 
-def selenideVersion = "5.20.1",
+
+def selenideVersion = "6.13.1",
     junitVersion = "5.7.1",
     javaFakerVersion = "1.0.2",
     assertjVersion = "3.19.0",
     aspectjVersion = "1.9.6",
     ownerVersion = "1.0.12",
-    restAssuredVersion = "4.3.1",
+    restAssuredVersion = "5.3.0",
     allureVersion = "2.13.8"
 
 allure {
@@ -49,7 +50,7 @@ tasks.withType(JavaCompile) {
     targetCompatibility = JavaVersion.VERSION_1_8
 }
 
-tasks.withType(Test) {
+tasks.withType(Test).configureEach {
     systemProperties(System.getProperties())
     useJUnitPlatform()
     systemProperty "chromeoptions.prefs", "intl.accept_languages=en"
@@ -72,13 +73,13 @@ tasks.withType(Test) {
     }
 }
 
-task ui(type: Test) {
+tasks.register('ui', Test) {
     useJUnitPlatform {
         includeTags 'ui'
     }
 }
 
-task api(type: Test) {
+tasks.register('api', Test) {
     useJUnitPlatform {
         includeTags 'api'
     }
