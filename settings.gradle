@@ -1,0 +1,8 @@
+include 'qag-2-selenide-1'
+include 'qag-3-selenide-2'
+include 'qag-4-pageobjects'
+include 'qag-5-selenide-allure'
+include 'qag-6-working-with-files'
+include 'qag-7-git'
+include 'qag-11-combine-all-together'
+
