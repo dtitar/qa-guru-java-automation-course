@@ -1,0 +1,11 @@
+include 'qag-2-selenide-1'
+include 'qag-3-selenide-2'
+include 'qag-4-pageobjects'
+include 'qag-5-selenide-allure'
+include 'qag-6-working-with-files'
+include 'qag-7-git'
+include 'qag-11-combine-all-together'
+include 'qag-13-owner'
+include 'qag-15-rest-assured'
+include 'qag-20-mobile-browserstack'
+
