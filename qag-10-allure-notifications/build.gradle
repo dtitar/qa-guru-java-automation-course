@@ -1,0 +1,53 @@
+plugins {
+    id "java"
+    id "io.qameta.allure" version "2.8.1"
+}
+
+repositories {
+    mavenCentral()
+}
+
+def junitVersion = "5.7.1",
+    pdfTestVersion = "1.5.1",
+    xlsTestVersion = "1.4.3",
+    zip4jVersion = "1.3.2",
+    poiVersion = "5.0.0",
+    aspectjweaverVersion = "1.9.6",
+    allureVersion = "2.13.8"
+
+allure {
+    version = allureVersion
+    autoconfigure = true
+    aspectjweaver = true
+    configuration = "testImplementation"
+    useJUnit5 {
+        version = allureVersion
+    }
+}
+
+dependencies {
+    testImplementation(
+            "org.junit.jupiter:junit-jupiter-api:$junitVersion",
+            "org.aspectj:aspectjweaver:$aspectjweaverVersion",
+            "com.codeborne:pdf-test:$pdfTestVersion",
+            "com.codeborne:xls-test:$xlsTestVersion",
+            "net.lingala.zip4j:zip4j:$zip4jVersion",
+            "org.apache.poi:poi-scratchpad:$poiVersion",
+            "org.apache.poi:poi-ooxml:$poiVersion",
+            "io.qameta.allure:allure-selenide:$allureVersion",
+            "org.apache.poi:poi:$poiVersion"
+    )
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.6.1'
+    testImplementation group: 'org.hamcrest', name: 'hamcrest', version: '2.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = "UTF-8"
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+test {
+    useJUnitPlatform()
+}
