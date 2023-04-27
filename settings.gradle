@@ -7,4 +7,5 @@ include 'qag-7-git'
 include 'qag-11-combine-all-together'
 include 'qag-13-owner'
 include 'qag-15-rest-assured'
+include 'qag-20-mobile-browserstack'
 
