@@ -43,13 +43,13 @@ dependencies {
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
 }
 
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
 }
 
-tasks.withType(Test) {
+tasks.withType(Test).configureEach {
     systemProperties(System.getProperties())
     useJUnitPlatform()
     systemProperty "chromeoptions.prefs", "intl.accept_languages=en"
@@ -72,13 +72,13 @@ tasks.withType(Test) {
     }
 }
 
-task ui(type: Test) {
+tasks.register('ui', Test) {
     useJUnitPlatform {
         includeTags 'ui'
     }
 }
 
-task api(type: Test) {
+tasks.register('api', Test) {
     useJUnitPlatform {
         includeTags 'api'
     }
